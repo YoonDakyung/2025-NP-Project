@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>하루감정</title>
+  <link rel="stylesheet" href="Main.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script defer src="../../js/Main.js"></script>
+
+</head>
+<body>
+
+  <h1>📆 하루감정 🤗</h1>
+
+  <div style="display: flex; justify-content: center; align-items: center; gap: 1rem; margin-top: 1rem;">
+    <button id="prev">◀ 이전달</button>
+    <h2 id="monthText">2025년 6월</h2>
+    <button id="next">다음달 ▶</button>
+  </div>
+
+  <div class="calendar weekdays">
+    <div class="weekday sun">일</div>
+    <div class="weekday">월</div>
+    <div class="weekday">화</div>
+    <div class="weekday">수</div>
+    <div class="weekday">목</div>
+    <div class="weekday">금</div>
+    <div class="weekday sat">토</div>
+  </div>
+
+  <div id="calendar" class="calendar"></div>
+
+  <div id="chart-container">
+    <canvas id="emotionChart"></canvas>
+  </div>
+
+  <div id="diaryModal" class="modal" style="display: none;">
+    <div class="modal-content">
+        <h3 id="modalDate">날짜</h3>
+        <p>오늘 하루의 감정과 생각을 일기에 남겨보세요.</p>
+        <textarea id="diaryText" rows="5" placeholder="예: 행복한 하루였어!"></textarea>
+        <button id="saveDiary">저장</button>
+    </div>
+  </div>
+
+</body>
+</html>
