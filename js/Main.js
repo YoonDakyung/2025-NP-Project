@@ -5,7 +5,7 @@ let currentMonth = new Date().getMonth();
 const emotionKeywords = {
   '행복': ['행복'],
   '기쁨': ['기쁨', '기쁘다', '기뻐', '기뻤다'],
-  '즐거움': ['즐거움', '즐겁다', '즐거웠어'],
+  '즐거움': ['즐거움', '즐겁다', '즐거웠어','재미','재밌'],
   '설렘': ['설렘', '설레다', '설렜어'],
   '감사': ['감사', '고맙다'],
   '사랑': ['사랑'],
@@ -19,7 +19,7 @@ const emotionKeywords = {
   '외로움': ['외롭다', '외로웠어', '혼자'],
   '후회': ['후회'],
   '무기력': ['무기력', '힘이 없다'],
-  '지침': ['지치다', '지쳤어', '힘들다'],
+  '지침': ['지치다', '지쳤어', '힘들다','힘든'],
   '화남': ['화', '열받아'],
   '짜증': ['짜증'],
   '분노': ['분노', '폭발'],
@@ -86,10 +86,15 @@ function renderCalendar(year, month) {
 }
 
 function analyzeEmotion(text) {
-  for (const key in emotionMap) {
-    if (text.includes(key)) return key;
+  for (const emotion in emotionKeywords) {
+    const keywords = emotionKeywords[emotion];
+    for (const keyword of keywords) {
+      if (text.includes(keyword)) {
+        return emotion; // 해당 감정 반환
+      }
+    }
   }
-  return '기타';
+  return '기타'; // 해당 없으면 기타로 분류
 }
 
 function renderChart() {
@@ -143,7 +148,10 @@ function openDiaryPrompt(dateKey) {
 
   const prev = diaryData[dateKey]?.text || '';
   diaryText.value = prev;
-  modalDate.textContent = dateKey.replace(/-/g, '년 ').replace(/-(\d+)$/, '월 $1일');
+
+  const [year, month, day] = dateKey.split('-');
+  modalDate.textContent = `${year}년 ${month}월 ${day}일`;
+
   modal.style.display = 'flex';
 
   saveBtn.onclick = function () {
@@ -156,6 +164,7 @@ function openDiaryPrompt(dateKey) {
     modal.style.display = 'none'; // ✅ 모달 닫기!
   };
 }
+
 
 // 밖 누르면 닫기
 window.onclick = function (event) {
