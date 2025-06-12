@@ -1,56 +1,74 @@
+h1 {
+  margin-top: 40px;
+  font-size: 35px;         /* 제목 크기 키움 */
+  font-weight: bold;
+  color: #f19584;
+}
+
+h2#monthText {
+  font-size: 28px;         /* 월 텍스트도 크기 키움 */
+  margin: 0;
+  color: #555;
+}
 body {
-      font-family: 'Noto Sans KR', sans-serif;
-      background-color: #fdf6ee;
-      color: #333;
-      text-align: center;
-      margin: 0;
-      padding: 0;
-    }
-    h1 {
-      margin-top: 30px;
-      color: #f19584;
-    }
-    .calendar {
-      display: grid;
-      grid-template-columns: repeat(7, 1fr);
-      max-width: 600px;
-      margin: 20px auto;
-      gap: 5px;
-    }
-    .day {
-      background-color: #fff;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      padding: 20px;
-      min-height: 60px;
-      cursor: pointer;
-      position: relative;
-      transition: background 0.2s;
-    }
-    .day:hover {
-      background-color: hwb(29 58% 0%);
-    }
-    .emoji {
-      font-size: 18px;
-      position: absolute;
-      bottom: 5px;
-      right: 10px;
-    }
-    #chart-container {
-      width: 80%;
-      margin: 40px auto;
-    }
-    .weekdays {
+  font-family: 'Noto Sans KR', sans-serif;
+  background-color: #fdf6ee;
+  color: #333;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  margin-top: 30px;
+  color: #f19584;
+}
+
+/* 달력 크기 키움 */
+.calendar {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  max-width: 600px;
+  max-width: 750px;  /* 기존 600px → 확대 */
+  margin: 20px auto;
+  gap: 6.5px;  /* 간격도 약간 키움 */
+}
+
+/* 날짜 셀 크기 확대 */
+.day {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 30px;          /* 기존 20px → 확대 */
+  min-height: 80px;      /* 기존 60px → 확대 */
+  font-size: 20px;        /* 글자 크기 키움 */
+  cursor: pointer;
+  position: relative;
+  transition: background 0.2s;
+}
+
+.day:hover {
+  background-color: hwb(29 58% 0%);
+}
+
+.emoji {
+  font-size: 24px;        /* 기존 18px → 확대 */
+  position: absolute;
+  bottom: 8px;
+  right: 12px;
+}
+
+/* 요일 표시 */
+.weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  max-width: 750px;       /* 달력에 맞춰 확대 */
   margin: 0 auto;
   font-weight: bold;
   margin-bottom: 5px;
 }
 
 .weekday {
-  padding: 10px 0;
+  padding: 14px 0;
   background-color: #ffede4;
   border-radius: 6px;
 }
@@ -62,6 +80,8 @@ body {
 .sat {
   color: rgb(103, 103, 255);
 }
+
+/* 모달창 */
 .modal {
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
@@ -76,7 +96,7 @@ body {
   padding: 2rem;
   border-radius: 12px;
   text-align: center;
-  width: 300px;
+  width: 320px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
@@ -96,4 +116,9 @@ textarea {
   border: none;
   border-radius: 8px;
   cursor: pointer;
+}
+#chart-container {
+  width: 100%;       /* 전체 폭 사용 */
+  max-width: 900px;  /* 최대 너비 제한 */
+  margin: 40px auto;
 }
