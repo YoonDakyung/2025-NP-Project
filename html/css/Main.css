@@ -1,15 +1,4 @@
-h1 {
-  margin-top: 40px;
-  font-size: 35px;         /* 제목 크기 키움 */
-  font-weight: bold;
-  color: #f19584;
-}
-
-h2#monthText {
-  font-size: 28px;         /* 월 텍스트도 크기 키움 */
-  margin: 0;
-  color: #555;
-}
+/* -------------------- 전체 구조 -------------------- */
 body {
   font-family: 'Noto Sans KR', sans-serif;
   background-color: #fdf6ee;
@@ -19,49 +8,25 @@ body {
   padding: 0;
 }
 
+/* -------------------- 제목 -------------------- */
 h1 {
-  margin-top: 30px;
+  margin-top: 40px;
+  font-size: 35px;         /* 제목 크기 키움 */
+  font-weight: bold;
   color: #f19584;
 }
 
-/* 달력 크기 키움 */
-.calendar {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  max-width: 750px;  /* 기존 600px → 확대 */
-  margin: 20px auto;
-  gap: 6.5px;  /* 간격도 약간 키움 */
+h2#monthText {
+  font-size: 28px;         /* 월 텍스트 크기 키움 */
+  margin: 0;
+  color: #555;
 }
 
-/* 날짜 셀 크기 확대 */
-.day {
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  padding: 30px;          /* 기존 20px → 확대 */
-  min-height: 80px;      /* 기존 60px → 확대 */
-  font-size: 20px;        /* 글자 크기 키움 */
-  cursor: pointer;
-  position: relative;
-  transition: background 0.2s;
-}
-
-.day:hover {
-  background-color: hwb(29 58% 0%);
-}
-
-.emoji {
-  font-size: 24px;        /* 기존 18px → 확대 */
-  position: absolute;
-  bottom: 8px;
-  right: 12px;
-}
-
-/* 요일 표시 */
+/* -------------------- 요일 헤더 -------------------- */
 .weekdays {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  max-width: 750px;       /* 달력에 맞춰 확대 */
+  max-width: 750px;
   margin: 0 auto;
   font-weight: bold;
   margin-bottom: 5px;
@@ -81,7 +46,40 @@ h1 {
   color: rgb(103, 103, 255);
 }
 
-/* 모달창 */
+/* -------------------- 달력 -------------------- */
+.calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  max-width: 750px;
+  margin: 20px auto;
+  gap: 6.5px;
+}
+
+.day {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 30px;
+  min-height: 80px;
+  font-size: 20px;
+  cursor: pointer;
+  position: relative;
+  transition: background 0.2s;
+}
+
+.day:hover {
+  background-color: hwb(29 58% 0%);
+}
+
+/* -------------------- 감정 이모지 -------------------- */
+.emoji {
+  font-size: 24px;
+  position: absolute;
+  bottom: 8px;
+  right: 12px;
+}
+
+/* -------------------- 모달창 -------------------- */
 .modal {
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
@@ -117,8 +115,32 @@ textarea {
   border-radius: 8px;
   cursor: pointer;
 }
+
+/* -------------------- 감정 추이 차트 -------------------- */
 #chart-container {
-  width: 100%;       /* 전체 폭 사용 */
-  max-width: 900px;  /* 최대 너비 제한 */
+  width: 100%;
+  max-width: 900px;
   margin: 40px auto;
+}
+
+/* -------------------- 반응형 미디어 쿼리 -------------------- */
+@media (max-width: 600px) {
+  .calendar, .weekdays {
+    max-width: 100%;
+    grid-template-columns: repeat(7, 1fr);
+  }
+
+  .day {
+    padding: 16px;
+    min-height: 60px;
+    font-size: 16px;
+  }
+
+  .emoji {
+    font-size: 18px;
+  }
+
+  .modal-content {
+    width: 90%;
+  }
 }

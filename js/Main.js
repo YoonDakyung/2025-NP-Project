@@ -110,7 +110,6 @@ function analyzeEmotion(text) {
   return '기타';
 }
 
-// 월별 감정 차트 렌더링
 function renderChart(year, month) {
   const count = {
     긍정: 0,
@@ -120,12 +119,25 @@ function renderChart(year, month) {
     기타: 0
   };
 
+  const detailCount = {
+    긍정: {},
+    부정: {},
+    분노: {},
+    긴장: {},
+    기타: {}
+  };
+
   for (const key in diaryData) {
     const [entryYear, entryMonth] = key.split('-').map(Number);
     if (entryYear === year && entryMonth === (month + 1)) {
       const emotion = diaryData[key].emotion;
       const category = getEmotionCategory(emotion);
       count[category]++;
+
+      if (!detailCount[category][emotion]) {
+        detailCount[category][emotion] = 0;
+      }
+      detailCount[category][emotion]++;
     }
   }
 
@@ -162,6 +174,22 @@ function renderChart(year, month) {
             size: 20,
             weight: 'bold'
           }
+        },
+        tooltip: {
+          callbacks: {
+            label: function (context) {
+              const categoryLabels = ['긍정', '부정', '분노', '긴장', '기타'];
+              const category = categoryLabels[context.dataIndex];
+              const details = detailCount[category];
+              if (!details || Object.keys(details).length === 0) {
+                return `${category}: 없음`;
+              }
+
+              return `${category} 감정:\n` + Object.entries(details)
+                .map(([emotion, value]) => `• ${emotion}: ${value}`)
+                .join('\n');
+            }
+          }
         }
       },
       scales: {
@@ -173,6 +201,9 @@ function renderChart(year, month) {
     }
   });
 }
+
+
+  
 document.getElementById('prev').onclick = () => {
   currentMonth--;
   if (currentMonth < 0) {
