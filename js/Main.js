@@ -3,7 +3,6 @@ const calendar = document.getElementById('calendar');
 let currentYear = new Date().getFullYear();
 let currentMonth = new Date().getMonth();
 
-// 감정 키워드와 이모지 매핑
 const emotionKeywords = {
   '행복': ['행복'],
   '기쁨': ['기쁨', '기쁘다', '기뻐', '기뻤다'],
@@ -46,7 +45,6 @@ const emotionMap = {
   '그냥': '🤔', '기타': '✍️'
 };
 
-// 감정 카테고리 색상 매핑
 const emotionCategoryColors = {
   '긍정': '#FFD54F',
   '부정': '#90CAF9',

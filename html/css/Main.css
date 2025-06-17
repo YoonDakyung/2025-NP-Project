@@ -1,4 +1,3 @@
-/* -------------------- 전체 구조 -------------------- */
 body {
   font-family: 'Noto Sans KR', sans-serif;
   background-color: #fdf6ee;
@@ -8,21 +7,19 @@ body {
   padding: 0;
 }
 
-/* -------------------- 제목 -------------------- */
 h1 {
   margin-top: 40px;
-  font-size: 35px;         /* 제목 크기 키움 */
+  font-size: 35px;        
   font-weight: bold;
   color: #f19584;
 }
 
 h2#monthText {
-  font-size: 28px;         /* 월 텍스트 크기 키움 */
+  font-size: 28px;         
   margin: 0;
   color: #555;
 }
 
-/* -------------------- 요일 헤더 -------------------- */
 .weekdays {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
@@ -46,7 +43,6 @@ h2#monthText {
   color: rgb(103, 103, 255);
 }
 
-/* -------------------- 달력 -------------------- */
 .calendar {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
@@ -71,7 +67,6 @@ h2#monthText {
   background-color: hwb(29 58% 0%);
 }
 
-/* -------------------- 감정 이모지 -------------------- */
 .emoji {
   font-size: 24px;
   position: absolute;
@@ -79,7 +74,6 @@ h2#monthText {
   right: 12px;
 }
 
-/* -------------------- 모달창 -------------------- */
 .modal {
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
@@ -116,14 +110,12 @@ textarea {
   cursor: pointer;
 }
 
-/* -------------------- 감정 추이 차트 -------------------- */
 #chart-container {
   width: 100%;
   max-width: 900px;
   margin: 40px auto;
 }
 
-/* -------------------- 반응형 미디어 쿼리 -------------------- */
 @media (max-width: 600px) {
   .calendar, .weekdays {
     max-width: 100%;
